@@ -8,6 +8,19 @@ from hashlib import sha256
 import requests
 from Crypto.Hash import HMAC, SHA256
 
+def retrieveTransactionStatus(id):
+    print(id)
+    api_key = "sD1pPsnDa7wExgyKt30yu5AfgiiIBBYB"
+    url = f"https://prod.emea.api.fiservapps.com/sandbox/exp/v1/transactions"
+
+    headers = {
+        'Content-Type': "application/json",
+        'Api-Key': api_key,
+        'Merchant-Id': '881111110000228'
+    }
+    r = requests.get(url, headers=headers)
+    print(r.json())
+
 def retrievePaymentStatus(id):
     api_key = "sD1pPsnDa7wExgyKt30yu5AfgiiIBBYB"
     secret_key = "XTEoOx4D09cg8DbMW8LU57ZwZ6qCGRgh5mGMS3OBd8v"
@@ -31,7 +44,7 @@ def retrievePaymentStatus(id):
     r = requests.get(url=url, headers=headers)
     return r.json()
 
-def createPayment(amount, name, phone_number, email, address, city, postalCode, country, card_number, security_code, expiry_month, expiry_year):
+def createPayment(amount, name, phone_number, email, address, city, postalCode, country, card_number, security_code, expiry_month, expiry_year, description):
     url = "https://prod.emea.api.fiservapps.com/sandbox/ipp/payments-gateway/v2/payments/"
     payload ={
         "transactionAmount": {
@@ -62,6 +75,10 @@ def createPayment(amount, name, phone_number, email, address, city, postalCode, 
                     "postalCode": postalCode,
                     "country" : country
                 }
+            },
+
+            "additionalDetails" : {
+                "comments" : description
             }
         }
     }
@@ -91,8 +108,8 @@ def createPayment(amount, name, phone_number, email, address, city, postalCode, 
 
     r =  requests.post(url, data=payload, headers=headers)
     print(r.json())
-    r1 = retrievePaymentStatus(r.json()['ipgTransactionId'])
-
+    retrieveTransactionStatus(r.json()['ipgTransactionId'])
+    #retrievePaymentStatus(r.json()['ipgTransactionId'])
 
     return r.json()['transactionStatus']
 

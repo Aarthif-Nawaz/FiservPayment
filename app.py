@@ -1,6 +1,34 @@
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify, make_response, render_template
+
 from Functions import createPayment
 app = Flask(__name__)
+
+@app.route('/Pay', methods=['GET', 'POST'])
+def standalonePay():
+    if request.method == "POST":
+        try:
+            total_amount = request.form.get('total_amount')
+            address = request.form.get('address')
+            phone_number = request.form.get('phone')
+            card_number = request.form.get('card_number')
+            expiry = request.form.get('expiry')
+            expiry_month = expiry.split("/")[0]
+            expiry_year = expiry.split("/")[1]
+            cvv = request.form.get('cvv')
+            postal = request.form.get('postal')
+            country = request.form.get('country')
+            email = request.form.get('email')
+            city = request.form.get('city')
+            name = request.form.get('name')
+            description = request.form.get('description')
+            r = createPayment(amount=total_amount, address=address, phone_number=phone_number, card_number=card_number,
+                              expiry_month=expiry_month, expiry_year=expiry_year, security_code=cvv, postalCode=postal,
+                              country=country, email=email, city=city, name=name,description=description)
+            return make_response(jsonify({'Transaction Status': r}), 200)
+        except Exception as e:
+            return jsonify({'Error ' : e})
+    else:
+        return render_template('index.html')
 
 @app.route('/getTransactionStatus', methods=['GET','POST'])
 def getStatus():
@@ -18,10 +46,12 @@ def getStatus():
             email = request.get_json(force=True)['email'] if request.get_json(force=True)['email'] else ""
             city = request.get_json(force=True)['city'] if request.get_json(force=True)['city'] else ""
             name = request.get_json(force=True)['name'] if request.get_json(force=True)['name'] else ""
+            r = createPayment(amount=total_amount, address=address, phone_number=phone_number, card_number=card_number,
+                              expiry_month=expiry_month, expiry_year=expiry_year, security_code=cvv, postalCode=postal,
+                              country=country, email=email, city=city, name=name)
+            return make_response(jsonify({'Transaction Status': r}), 200)
         except Exception as e:
             return jsonify({'Error :  Please provide below data' : e}, 400)
-        r = createPayment(amount=total_amount,address=address, phone_number=phone_number, card_number=card_number, expiry_month=expiry_month, expiry_year=expiry_year, security_code=cvv, postalCode=postal, country=country, email=email, city=city, name=name)
-        return make_response(jsonify({'Transaction Status' : r}), 200)
     else:
         return jsonify({'Result', 'Please post data to recieve status'}, 302)
 
