@@ -105,13 +105,15 @@ def createPayment(amount, name, phone_number, email, address, city, postalCode, 
     }
 
 
+    try:
+        r =  requests.post(url, data=payload, headers=headers)
+        print(r.json())
+        retrieveTransactionStatus(r.json()['ipgTransactionId'])
+        #retrievePaymentStatus(r.json()['ipgTransactionId'])
 
-    r =  requests.post(url, data=payload, headers=headers)
-    print(r.json())
-    retrieveTransactionStatus(r.json()['ipgTransactionId'])
-    #retrievePaymentStatus(r.json()['ipgTransactionId'])
-
-    return r.json()['transactionStatus']
+        return r.json()['transactionStatus']
+    except Exception as e:
+        return "An Error Occurred, Please Try Again with valid details"
 
 #createPayment(amount="12.23",address="123/3,AndersonRoad",phone_number="94773753001",card_number="4761739001010010",expiry_month="10", expiry_year="22",postalCode="10350",security_code="002",country="USA",email="aarthifnawaz@gmail.com", city="Colombo", name="Aarthif")
 

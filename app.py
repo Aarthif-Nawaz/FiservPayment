@@ -26,7 +26,7 @@ def standalonePay():
                               country=country, email=email, city=city, name=name,description=description)
             return render_template('index.html', status=r)
         except Exception as e:
-            return jsonify({'Error ' : e})
+            return render_template('index.html', status=r)
     else:
         return render_template('index.html')
 
