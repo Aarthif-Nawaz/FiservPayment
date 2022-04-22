@@ -9,6 +9,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<div class="logo">
+    <img src="https://voice09.epic.dm/upload/1750045209.jpg" width="200px" height="100px">
+</div>
+{% if status %}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{ status }}
+    </div>
+{% else %}
+    <div></div>
+{% endif %}
 <div class="box-2" style="text-align: center; margin: auto;
   width: 50%;
   border: 3px solid black;
@@ -46,7 +58,8 @@
                          data-parent="#accordionExample">
                         <div class="card-body payment-card-body"><span
                                 class="font-weight-normal card-text">Card Number</span>
-                            <div class="input"><i class="fa fa-credit-card"></i> <input name="card_number" type="text" class="form-control"
+                            <div class="input"><i class="fa fa-credit-card"></i> <input name="card_number" type="text"
+                                                                                        class="form-control"
                                                                                         placeholder="0000 0000 0000 0000">
                             </div>
                             <div class="row mt-3 mb-3">
@@ -87,7 +100,9 @@
                             <p class="fw-bold"><input name="description" class="form-control" type="text"
                                                       placeholder="Description"></p>
                         </div>
-                        <Button type="submit" class="btn btn-primary mt-2" style="background-color: dodgerblue; color: black;width: 420px;">Pay</Button>
+                        <Button type="submit" class="btn btn-primary mt-2"
+                                style="background-color: dodgerblue; color: black;width: 420px;">Pay
+                        </Button>
                     </div>
                 </div>
             </div>

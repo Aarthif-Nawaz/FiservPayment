@@ -24,7 +24,7 @@ def standalonePay():
             r = createPayment(amount=total_amount, address=address, phone_number=phone_number, card_number=card_number,
                               expiry_month=expiry_month, expiry_year=expiry_year, security_code=cvv, postalCode=postal,
                               country=country, email=email, city=city, name=name,description=description)
-            return make_response(jsonify({'Transaction Status': r}), 200)
+            return render_template('index.html', status=r)
         except Exception as e:
             return jsonify({'Error ' : e})
     else:
