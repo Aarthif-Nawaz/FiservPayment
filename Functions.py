@@ -44,12 +44,12 @@ def retrievePaymentStatus(id):
     r = requests.get(url=url, headers=headers)
     return r.json()
 
-def createPayment(amount, name, phone_number, email, address, city, postalCode, country, card_number, security_code, expiry_month, expiry_year, description):
+def createPayment(currency, amount, name, phone_number, email, address, city, postalCode, country, card_number, security_code, expiry_month, expiry_year, description):
     url = "https://prod.emea.api.fiservapps.com/sandbox/ipp/payments-gateway/v2/payments/"
     payload ={
         "transactionAmount": {
             "total": amount,
-            "currency": "USD"
+            "currency": "MXN"
         },
         "requestType": "PaymentCardCreditTransaction",
         "paymentMethod": {

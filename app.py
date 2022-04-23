@@ -18,13 +18,14 @@ def standalonePay():
             except Exception as e:
                 return render_template('index.html', status="An Error Occurred, Please try again!")
             cvv = request.form.get('cvv')
+            currency = request.form.get('currency')
             postal = request.form.get('postal')
             country = request.form.get('country')
             email = request.form.get('email')
             city = request.form.get('city')
             name = request.form.get('name')
             description = request.form.get('description')
-            r = createPayment(amount=total_amount, address=address, phone_number=phone_number, card_number=card_number,
+            r = createPayment(currency=currency,amount=total_amount, address=address, phone_number=phone_number, card_number=card_number,
                               expiry_month=expiry_month, expiry_year=expiry_year, security_code=cvv, postalCode=postal,
                               country=country, email=email, city=city, name=name,description=description)
             return render_template('index.html', status=r)
