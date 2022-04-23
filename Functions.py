@@ -49,7 +49,7 @@ def createPayment(currency, amount, name, phone_number, email, address, city, po
     payload ={
         "transactionAmount": {
             "total": amount,
-            "currency": "MXN"
+            "currency": currency
         },
         "requestType": "PaymentCardCreditTransaction",
         "paymentMethod": {
