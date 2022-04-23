@@ -11,9 +11,12 @@ def standalonePay():
             address = request.form.get('address')
             phone_number = request.form.get('phone')
             card_number = request.form.get('card_number')
-            expiry = request.form.get('expiry')
-            expiry_month = expiry.split("/")[0]
-            expiry_year = expiry.split("/")[1]
+            try:
+                expiry = request.form.get('expiry')
+                expiry_month = expiry.split("/")[0]
+                expiry_year = expiry.split("/")[1]
+            except Exception as e:
+                return render_template('index.html', status="An Error Occurred, Please try again!")
             cvv = request.form.get('cvv')
             postal = request.form.get('postal')
             country = request.form.get('country')
