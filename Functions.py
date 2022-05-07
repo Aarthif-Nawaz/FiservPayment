@@ -1,3 +1,4 @@
+import datetime
 import uuid
 import time
 import json
@@ -20,6 +21,18 @@ def retrieveTransactionStatus(id):
     }
     r = requests.get(url, headers=headers)
     print(r.json())
+
+def getHashExtended(charge, currency, time):
+    store = "811733854027"
+    secret = "S|z4&ne#XX"
+    site = "http://localhost:5000/successs"
+    string_to_hash = charge+"|"+currency+"|"+"M"+"|"+site+"|"+site+"|"+store+"|"+"Asia/Calcutta"+"|"+site+"|"+time+"|"+"sale"
+    print(string_to_hash)
+    signature = hmac.new(secret.encode(), string_to_hash.encode(), hashlib.sha256).digest()
+    b64_sig = base64.b64encode(signature).decode()
+    print(b64_sig)
+    return b64_sig
+
 
 def retrievePaymentStatus(id):
     api_key = "sD1pPsnDa7wExgyKt30yu5AfgiiIBBYB"

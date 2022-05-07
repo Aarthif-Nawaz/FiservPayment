@@ -29,91 +29,105 @@
         <div>
             <p class="fw-bold" style="font-weight: bold">Payment Details</p>
         </div>
-        <form method="post" ac>
-            <div class="mb-3">
-                <p class="dis fw-bold mb-2">Email address</p> <input name="email" class="form-control" type="email"
-                                                                     placeholder="Email Address">
-            </div>
-            <div class="mb-3">
-                <p class="dis fw-bold mb-2">Phone Number</p> <input name="phone" class="form-control" type="text"
-                                                                    placeholder="phone">
-            </div>
-            <div>
-                <p class="dis fw-bold mb-2">Card details</p>
-                <div class="card">
-                    <div class="card-header p-0">
-                        <h2 class="mb-0">
-                            <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse"
-                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <div class="d-flex align-items-center justify-content-between"><span>Credit card</span>
-                                    <div class="icons"><img src="https://i.imgur.com/2ISgYja.png" width="30"> <img
-                                            src="https://i.imgur.com/W1vtnOV.png" width="30"> <img
-                                            src="https://i.imgur.com/35tC99g.png" width="30"> <img
-                                            src="https://i.imgur.com/2ISgYja.png" width="30"></div>
-                                </div>
-                            </button>
-                        </h2>
-                    </div>
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                         data-parent="#accordionExample">
-                        <div class="card-body payment-card-body"><span
-                                class="font-weight-normal card-text">Card Number</span>
-                            <div class="input"><i class="fa fa-credit-card"></i> <input name="card_number" type="text"
-                                                                                        class="form-control"
-                                                                                        placeholder="0000 0000 0000 0000">
-                            </div>
-                            <div class="row mt-3 mb-3">
-                                <div class="col-md-6"><span class="font-weight-normal card-text">Expiry Date</span>
-                                    <div class="input"><i class="fa fa-calendar"></i> <input name="expiry" type="text"
-                                                                                             class="form-control"
-                                                                                             placeholder="MM/YY"></div>
-                                </div>
-                                <div class="col-md-6"><span class="font-weight-normal card-text">CVC/CVV</span>
-                                    <div class="input"><i class="fa fa-lock"></i> <input name="cvv" type="text"
-                                                                                         class="form-control"
-                                                                                         placeholder="000"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="my-3 cardname">
-                    <p class="dis fw-bold mb-2">Cardholder name</p> <input name="name" class="form-control" type="text"
-                                                                           placeholder="Cardholder Name">
-                </div>
-                <div class="address">
-                    <p class="dis fw-bold mb-3">Billing address</p>
-
-                    <div class="d-flex">
-                        <input name="address" class="form-control zip" type="text" placeholder="Address"> <input
-                            name="postal" class="form-control zip" type="text" placeholder="Postal"> <input
-                            class="form-control state" name="city" type="text" placeholder="City"><input
-                            class="form-control state" name="country" type="text" placeholder="Country"></div>
-                    <div class="d-flex flex-column dis">
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <p class="fw-bold">Total</p>
-                            <p class="fw-bold"><input name="total_amount" class="form-control" type="text"
-                                                      placeholder="Total Amount"></p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <p class="fw-bold">Currency</p>
-                            <p class="fw-bold">
-                                <select name="currency">
-                                    <option value="USD">USD</option>
-                                    <option value="XCD">XCD</option>
-                                </select>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mb-2">
-                            <p class="fw-bold">Description</p>
-                            <p class="fw-bold"><input name="description" class="form-control" type="text"
-                                                      placeholder="Description"></p>
-                        </div>
-                        <Button type="submit" class="btn btn-primary mt-2"
-                                style="background-color: dodgerblue; color: black;width: 420px;">Pay
-                        </Button>
-                    </div>
-                </div>
-            </div>
+        {#        <form method="post">#}
+        {#            <div class="mb-3">#}
+        {#                <p class="dis fw-bold mb-2">Email address</p> <input name="email" class="form-control" type="email"#}
+        {#                                                                     placeholder="Email Address">#}
+        {#            </div>#}
+        {#            <div class="mb-3">#}
+        {#                <p class="dis fw-bold mb-2">Phone Number</p> <input name="phone" class="form-control" type="text"#}
+        {#                                                                    placeholder="phone">#}
+        {#            </div>#}
+        {#            <div>#}
+        {#                <p class="dis fw-bold mb-2">Card details</p>#}
+        {#                <div class="card">#}
+        {#                    <div class="card-header p-0">#}
+        {#                        <h2 class="mb-0">#}
+        {#                            <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse"#}
+        {#                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">#}
+        {#                                <div class="d-flex align-items-center justify-content-between"><span>Credit card</span>#}
+        {#                                    <div class="icons"><img src="https://i.imgur.com/2ISgYja.png" width="30"> <img#}
+        {#                                            src="https://i.imgur.com/W1vtnOV.png" width="30"> <img#}
+        {#                                            src="https://i.imgur.com/35tC99g.png" width="30"> <img#}
+        {#                                            src="https://i.imgur.com/2ISgYja.png" width="30"></div>#}
+        {#                                </div>#}
+        {#                            </button>#}
+        {#                        </h2>#}
+        {#                    </div>#}
+        {#                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"#}
+        {#                         data-parent="#accordionExample">#}
+        {#                        <div class="card-body payment-card-body"><span#}
+        {#                                class="font-weight-normal card-text">Card Number</span>#}
+        {#                            <div class="input"><i class="fa fa-credit-card"></i> <input name="card_number" type="text"#}
+        {#                                                                                        class="form-control"#}
+        {#                                                                                        placeholder="0000 0000 0000 0000">#}
+        {#                            </div>#}
+        {#                            <div class="row mt-3 mb-3">#}
+        {#                                <div class="col-md-6"><span class="font-weight-normal card-text">Expiry Date</span>#}
+        {#                                    <div class="input"><i class="fa fa-calendar"></i> <input name="expiry" type="text"#}
+        {#                                                                                             class="form-control"#}
+        {#                                                                                             placeholder="MM/YY"></div>#}
+        {#                                </div>#}
+        {#                                <div class="col-md-6"><span class="font-weight-normal card-text">CVC/CVV</span>#}
+        {#                                    <div class="input"><i class="fa fa-lock"></i> <input name="cvv" type="text"#}
+        {#                                                                                         class="form-control"#}
+        {#                                                                                         placeholder="000"></div>#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#                <div class="my-3 cardname">#}
+        {#                    <p class="dis fw-bold mb-2">Cardholder name</p> <input name="name" class="form-control" type="text"#}
+        {#                                                                           placeholder="Cardholder Name">#}
+        {#                </div>#}
+        {#                <div class="address">#}
+        {#                    <p class="dis fw-bold mb-3">Billing address</p>#}
+        {##}
+        {#                    <div class="d-flex">#}
+        {#                        <input name="address" class="form-control zip" type="text" placeholder="Address"> <input#}
+        {#                            name="postal" class="form-control zip" type="text" placeholder="Postal"> <input#}
+        {#                            class="form-control state" name="city" type="text" placeholder="City"><input#}
+        {#                            class="form-control state" name="country" type="text" placeholder="Country"></div>#}
+        {#                    <div class="d-flex flex-column dis">#}
+        {#                        <div class="d-flex align-items-center justify-content-between mb-2">#}
+        {#                            <p class="fw-bold">Total</p>#}
+        {#                            <p class="fw-bold"><input name="total_amount" class="form-control" type="text"#}
+        {#                                                      placeholder="Total Amount"></p>#}
+        {#                        </div>#}
+        {#                        <div class="d-flex align-items-center justify-content-between mb-2">#}
+        {#                            <p class="fw-bold">Currency</p>#}
+        {#                            <p class="fw-bold">#}
+        {#                                <select name="currency">#}
+        {#                                    <option value="USD">USD</option>#}
+        {#                                    <option value="XCD">XCD</option>#}
+        {#                                </select>#}
+        {#                        </div>#}
+        {#                        <div class="d-flex align-items-center justify-content-between mb-2">#}
+        {#                            <p class="fw-bold">Description</p>#}
+        {#                            <p class="fw-bold"><input name="description" class="form-control" type="text"#}
+        {#                                                      placeholder="Description"></p>#}
+        {#                        </div>#}
+        {#                        <Button type="submit" class="btn btn-primary mt-2"#}
+        {#                                style="background-color: dodgerblue; color: black;width: 420px;">Pay#}
+        {#                        </Button>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </form>#}
+        <form method="post" action="https://test.ipg-online.com/connect/gateway/processing">
+            <input type="hidden" name="txntype" value="sale">
+            <input type="hidden" name="language" value="en_US">
+            <input type="hidden" name="timezone" value="Asia/Calcutta"/>
+            <input type="hidden" name="txndatetime" value={{ date }} />
+            <input type="hidden" name="hash_algorithm" value="HMACSHA256"/>
+            <input type="hidden" name="hashExtended" value={{ hashed }} />
+            <input type="hidden" name="storename" value="811733854027"/>
+            <input type="hidden" name="mode" value="payonly"/>
+            <input type="hidden" name="paymentMethod" value="M"/>
+            <input type="text" name="chargetotal" value="13.00"/>
+            <input type="hidden" name="currency" value="840"/>
+            <input type="submit" value="Submit">
         </form>
     </div>
 </div>
